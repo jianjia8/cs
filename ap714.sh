@@ -1,19 +1,20 @@
 #!/bin/bash
 
-systemctl stop tari
-systemctl stop bitz
-systemctl disable tari
-systemctl disable bitz
-
 set -e
 
 echo "========== apoolminer 自动安装并注册为服务 =========="
 
+echo "检查命令行参数: \$1 = $1"
 [ "$1" ] && ACCOUNT="$1" || ACCOUNT="CP_sawwb8p0ec"
+echo "ACCOUNT 值: $ACCOUNT"
+
 INSTALL_DIR="/opt/apoolminer"
 SERVICE_FILE="/etc/systemd/system/apoolminer.service"
 POOL="xmr.hk.apool.io:3334"
+echo "创建安装目录: $INSTALL_DIR"
 mkdir -p "$INSTALL_DIR"
+
+# 其余代码保持不变
 
 # 安装依赖
 echo "安装必要组件..."
